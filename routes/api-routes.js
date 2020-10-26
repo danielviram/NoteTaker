@@ -26,13 +26,25 @@ module.exports = function(app) {
         fs.writeFileSync("./db/db.json", JSON.stringify(data), function(err){
             if (err) throw (err);
         });
+
         res.json(data);
     });
 
     app.delete("/api/notes/:id", function(req,res) {
-        
-        note_data.length = 0;
-        res.json({ok: true});
+
+        let noteId = req.params.id;
+        let newId = 0;
+        console.log (`Deleting note with id ${noteId}`);
+        data = data.filter (currentNote =>{
+            return currentNote.id != noteId;
+        });
+
+        for (currentNote of data){
+            currentNote.id = newId.toString();
+            newId++;
+        }
+        fs.writeFileSync("./db/db.json", JSON.stringify(data));
+        res.json(data);
     });
 
 };
