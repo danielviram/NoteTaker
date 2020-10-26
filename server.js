@@ -12,8 +12,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/assest", express.static("./assest"));
 
-require("./routes/apiRoutes")(app);
-require("./routes/htmlRoutes")(app);
+require("./routing/html-routes")(app);
+require("./routing/api-routes")(app);
 
 
 // STARTS THE SERVER TO BEGIN LISTENING 
