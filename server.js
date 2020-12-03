@@ -10,10 +10,10 @@ const PORT = process.env.PORT || 8080;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use("/assests", express.static("./assests"));
+app.use("/assets", express.static("./assets"));
 
 require("./routes/html-routes")(app);
-require("./routes/html-routes")(app);
+require("./routes/api-routes")(app);
 
 
 // STARTS THE SERVER TO BEGIN LISTENING 
